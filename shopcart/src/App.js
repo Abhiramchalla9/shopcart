@@ -1,24 +1,46 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/home.jsx'; // Corrected extension
+import Cart from './pages/cart.jsx'; // Corrected extension
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+        <div className=' flex w-9/10'>
+        <div className="navbar bg-base-100">
+  <div className="flex-1">
+    <a className="btn btn-ghost text-xl">daisyUI</a>
+  </div>
+  <div className="flex-none gap-2">
+    <div className="form-control">
+      <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
     </div>
+    <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+          <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+      </div>
+      <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+        <li>
+          <a className="justify-between">
+            Profile
+            <span className="badge">New</span>
+          </a>
+        </li>
+        <li><a>Settings</a></li>
+        <li><a>Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+        </div>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+    </BrowserRouter>
   );
 }
 
